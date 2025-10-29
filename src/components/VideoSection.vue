@@ -20,7 +20,7 @@ export default {
 </script> -->
 
 <template>
-  <div class="video-carousel">
+  <div class="video-carousel" style="--swiper-pagination-bullet-width:4.4rem;--swiper-pagination-bullet-height:0.2rem;--swiper-pagination-bullet-border-radius:0;--swiper-pagination-bullet-inactive-color:hsla(0, 0%, 100%, 0.3)">
     <swiper
       :modules="[Autoplay, EffectFade, Navigation, Pagination]"
       :autoplay="{ delay: 8000, disableOnInteraction: false }"
@@ -46,8 +46,6 @@ export default {
       </swiper-slide>
 
       <div class="swiper-pagination"></div>
-      <!-- <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div> -->
     </swiper>
   </div>
 </template>
@@ -59,21 +57,18 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import sample from '@/assets/video/sample.mp4';
-import sample2 from '@/assets/video/sample2.mp4';
-import sample3 from '@/assets/video/sample3.mp4';
 
 const videos = [
   {
-    src: sample,
+    src: "https://xps02.xiaopeng.com/cms/material/video/2023/01-06/video_20230106135720_85074.mp4",
     title: '科技创新，启航未来'
   },
   {
-    src: sample2,
+    src: "https://xps02.xiaopeng.com/cms/material/video/2023/06-29/video_20230629100416_00416.mp4",
     title: '探索智能，连接世界'
   },
   {
-    src: sample3,
+    src: "https://xps02.xiaopeng.com/cms/material/video/2023/04-07/video_20230407174751_66984.mp4",
     title: '创意视觉，展现无限'
   }
 ];
@@ -112,4 +107,5 @@ const videos = [
   font-size: 2rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
+
 </style>

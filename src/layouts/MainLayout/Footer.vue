@@ -68,7 +68,7 @@ const visible = computed(() => !paths.includes(route.path));
             </div>
           </div>
         </div>
-        <div>小鹏客服中心：<a href="tel:400-819-3388">400-819-3388</a></div>
+        <div>亚华客服中心：<a href="tel:400-819-3388">400-819-3388</a></div>
       </div>
     </div>
   </div>
