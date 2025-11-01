@@ -1,8 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-const itemRoutes: RouteRecordRaw[] = [
-  
-]
+const itemRoutes: RouteRecordRaw[] = [];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,7 +11,7 @@ const router = createRouter({
       children: [
         {
           path: '/',
-          component: () => import('@/views/home.vue')
+          component: () => import('@/views/Home.vue')
         },
         ...itemRoutes
       ]
@@ -24,16 +22,16 @@ const router = createRouter({
     }
   ],
   scrollBehavior() {
-    return { top: 0 }
+    return { top: 0 };
   }
-})
+});
 
 router.beforeEach((to) => {
   if (to.meta?.title) {
-    document.title = [to.meta.title, '江苏亚华集团官网'].join(' | ')
+    document.title = [to.meta.title, '江苏亚华集团官网'].join(' | ');
   } else {
-    document.title = '江苏亚华集团丨未来探索者'
+    document.title = '江苏亚华集团丨未来探索者';
   }
-})
+});
 
-export default router
+export default router;
