@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
+  base: '/yahua/',
   plugins: [vue()],
   server: {
     open: true // 启动后自动打开浏览器
