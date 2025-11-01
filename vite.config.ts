@@ -22,12 +22,7 @@ export default defineConfig(({ mode }) => {
           : []
     },
     build: {
-      // outDir: 'dist'
-      // output: {
-      //   chunkFileNames: 'assets/js/yh-[name]-[hash].js',
-      //   entryFileNames: 'assets/js/yh-[name]-[hash].js',
-      //   assetFileNames: 'assets/[ext]/yh-[name]-[hash].[ext]'
-      // }
+      outDir: 'docs'
     }
   };
 });
