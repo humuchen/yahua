@@ -1,49 +1,61 @@
 <template>
-  <div
-    class="video-carousel"
-    style="
-      --swiper-pagination-bullet-width: 4.4rem;
-      --swiper-pagination-bullet-height: 0.2rem;
-      --swiper-pagination-bullet-border-radius: 0;
-      --swiper-pagination-bullet-inactive-color: hsla(0, 0%, 100%, 0.3);
-    "
-  >
-    <swiper
-      :modules="[Autoplay, EffectFade, Navigation, Pagination]"
-      :autoplay="{ delay: 8000, disableOnInteraction: false }"
-      :loop="true"
-      :slides-per-view="1"
-      :space-between="50"
-      :pagination="{ clickable: true }"
-      effect="fade"
-      class="video-swiper"
+  <div>
+    <Swiper.Container
+      ref="swiperRef"
+      :interval="8000"
+      :pause-on-hover="false"
+      style="height: 100vh"
+      @change="
+        (index) => {
+          current = index;
+          if (videoRefs[index]) {
+            // 重置播放的时间点
+            videoRefs[index].currentTime = 0;
+          }
+        }
+      "
     >
-      <swiper-slide v-for="(video, index) in videos" :key="index">
+      <Swiper.Item v-for="(item, index) in videos" :key="item.title">
+        <img
+          v-if="item.pictureUrl"
+          :src="item.pictureUrl"
+          class="banner"
+          alt=""
+        />
         <video
-          class="video-player"
-          :src="video.src"
+          v-else-if="item.src"
+          :src="item.src"
+          :ref="(el) => (videoRefs[index] = el)"
+          class="banner"
           autoplay
           muted
           loop
-          playsinline
-        ></video>
-        <div class="video-overlay">
-          <h1 class="video-title">{{ video.title }}</h1>
+        />
+        <div class="content-wrapper">
+          <!-- <XIcon class="x" /> -->
+          <div class="title" v-html="item.title" />
         </div>
-      </swiper-slide>
+      </Swiper.Item>
+    </Swiper.Container>
 
-      <div class="swiper-pagination"></div>
-    </swiper>
+    <Grid :columns="videos.length" gap="0.4rem" class="dots">
+      <div
+        class="dot-item"
+        :key="item.title"
+        v-for="(item, index) in videos"
+        @click="swiperRef.goTo(index)"
+      >
+        <div class="line" :class="{ active: index === current }" />
+      </div>
+    </Grid>
   </div>
 </template>
 
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import * as Swiper from '@/components/Swiper';
+import { ref } from 'vue';
+import Grid from '@/components/Grid/Grid.vue';
+import XIcon from '@/components/Icons/X.vue';
 
 const videos = [
   {
@@ -59,10 +71,14 @@ const videos = [
     title: '创意视觉，展现无限'
   }
 ];
+
+const current = ref(0);
+const swiperRef = ref();
+const videoRefs = ref(Array(videos.length));
 </script>
 
 <style scoped>
-.video-carousel {
+/* .video-carousel {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -84,11 +100,6 @@ const videos = [
   position: absolute;
   top: 30%;
   left: 15%;
-  /* inset: 0; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* background: rgba(0, 0, 0, 0.25); */
 }
 
 .video-title {
@@ -96,5 +107,62 @@ const videos = [
   font-size: 3.2rem;
   letter-spacing: 0.6rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+} */
+
+.dots {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  .dot-item {
+    width: 4.4rem;
+    height: 4.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .line {
+      width: 4rem;
+      height: 0.3rem;
+      background-color: hsla(0, 0%, 100%, 0.3);
+      transform: skewX(-30deg);
+
+      &.active {
+        background-color: var(--color-primary);
+      }
+    }
+  }
+}
+
+.banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-wrapper {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+
+  .x {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, -30%);
+  }
+
+  .title {
+    color: #fff;
+    font-family: HYYakuHei, serif;
+    font-size: 3.2rem;
+    letter-spacing: 0.6rem;
+    line-height: 1.5;
+  }
 }
 </style>

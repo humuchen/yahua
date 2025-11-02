@@ -11,7 +11,7 @@ function goTop() {
 
 const visible = ref(false);
 const onPageScroll = useThrottle(() => {
-  visible.value = window.scrollY > document.documentElement.scrollHeight * 0.5;
+  visible.value = window.scrollY > document.documentElement.scrollHeight * 0.2;
 });
 onMounted(() => {
   window.addEventListener('scroll', onPageScroll);

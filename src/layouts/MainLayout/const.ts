@@ -12,6 +12,10 @@ export const menus = [
     href: ''
   },
   {
+    name: '服务中心',
+    href: ''
+  },
+  {
     name: '加入我们',
     href: ''
   }
