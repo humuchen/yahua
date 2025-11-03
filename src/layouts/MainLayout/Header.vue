@@ -44,9 +44,7 @@ const paths = ['/service'];
 watch(
   () => route.path,
   (val: string) => {
-    if (paths.includes(val)) {
-      onVisibleChange(true);
-    }
+    onVisibleChange(paths.includes(val));
   }
 );
 </script>
