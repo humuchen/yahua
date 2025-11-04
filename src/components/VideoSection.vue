@@ -129,7 +129,7 @@ const videoRefs = ref(Array(videos.length));
       transform: skewX(-30deg);
 
       &.active {
-        background-color: var(--color-primary);
+        background-color: var(--color-background);
       }
     }
   }

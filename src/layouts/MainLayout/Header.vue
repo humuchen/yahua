@@ -63,18 +63,18 @@ watch(
   justify-content: space-between;
 
   &.dark-theme {
-    background-color: #fff;
+    background-color: var(--color-background);
     border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
 
     .menu-item,
     .btn {
-      color: #000;
-      border-color: #000;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
     }
 
     .menu-item-wrapper:hover {
       .menu-item {
-        color: rgba(0, 0, 0, 0.6);
+        color: var(--color-primary);
       }
     }
   }
@@ -89,6 +89,7 @@ watch(
     height: 5.6rem;
     display: flex;
     align-items: center;
+    color: var(--color-primary);
 
     &.about-us:hover {
       .sub-menus {

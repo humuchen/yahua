@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #007aff;
-  --color-background: #f9f9f9;
+  --color-primary: #fff;
+  --color-background: #0b248d;
 }
 
 *,
@@ -24,15 +24,15 @@ body,
   margin: 0;
 }
 
-html{
+html {
   font-size: max(0.4vw, 10px);
 }
 
-/* @media (min-width: 768px) {
-  html {
-    font-size: max(0.7vw, 12px);
+@media (max-width: 768px) {
+  html {  
+    font-size: max(1.2vw, 0px);
   }
-} */
+}
 
 .page {
   min-height: 100vh;

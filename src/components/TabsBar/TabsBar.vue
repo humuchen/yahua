@@ -1,16 +1,16 @@
 <script setup lang="ts">
 defineProps<{
   options: {
-    title: string
-    description: string
-  }[]
-  current: number
-  darkTheme?: boolean
-}>()
+    title: string;
+    description: string;
+  }[];
+  current: number;
+  darkTheme?: boolean;
+}>();
 
 const emit = defineEmits<{
-  change: [index: number]
-}>()
+  change: [index: number];
+}>();
 </script>
 
 <template>
@@ -73,7 +73,7 @@ const emit = defineEmits<{
         font-weight: 500;
 
         &::after {
-          background-color: var(--color-primary);
+          background-color: var(--color-background);
         }
       }
 
