@@ -17,22 +17,22 @@ export const jiazhiguan = [
   {
     title: '简单',
     description: '实事求是 简单说话 简单做人 简单做事',
-    src: 'http://yhhgzb.com/templates/me/images/index_pic/index_pic.jpg'
+    src: 'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   },
   {
     title: '高效',
     description: '降本提效 管理提效 安全至上 结果向导',
-    src: 'http://yhhgzb.com/templates/me/images/index_pic/index_pic2.jpg'
+    src: 'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   },
   {
     title: '品质',
     description: '品质优先 持续改善',
-    src: 'http://yhhgzb.com/upload/day_130819/201308191003043221.jpg'
+    src: 'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   },
   {
     title: '尊重',
     description: '尊重客户 尊重合作伙伴 同学间互相尊重',
-    src: 'http://yhhgzb.com/Upload/image/pic_about_1.jpg'
+    src: 'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   }
 ];
 
@@ -41,19 +41,22 @@ export const guanhuai = [
     title: '我么你支持员工全面发展',
     description:
       '我们注重“以成长为导向”的发展理念，积极创造能够为员工赋能的培养体系，积蓄推动公司持续发展的核心竞争力、创新力以及变革力',
-    pictureUrl: 'http://yhhgzb.com/templates/me/images/index_pic/index_pic.jpg'
+    pictureUrl:
+      'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   },
   {
     title: '我们重视员工身心健康',
     description:
       '我们主张员工人文关怀至上，亚华感谢日、亚华关爱日、亚华女生节等系列活动百花齐放，支持员工之间相互勉励，共同进步',
-    pictureUrl: 'http://yhhgzb.com/Upload/image/pic_about_1.jpg'
+    pictureUrl:
+      'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   },
   {
     title: '提供多样的员工兴趣平台',
     description:
       '我们乐于创造员工之间分享兴趣爱好的机会，百变社团展现活力向上，一起探索世界，一起热血成长',
-    pictureUrl: 'http://yhhgzb.com/upload/day_130819/201308191003043221.jpg'
+    pictureUrl:
+      'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
   }
 ];
 
