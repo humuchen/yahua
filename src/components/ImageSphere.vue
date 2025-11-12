@@ -6,7 +6,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import gsap from 'gsap';
-import { onMounted, ref, defineEmits } from 'vue';
+import { onMounted, ref, defineEmits, onUnmounted } from 'vue';
 
 const props = defineProps<{ images: Array<String> }>();
 
@@ -35,10 +35,19 @@ onMounted(() => {
   const imageCount = 80;
   const radius = 100;
 
+  const placeholderTexture = new THREE.TextureLoader().load(
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAC4nK1dAAAAKUlEQVR4nO3BMQEAAAgDINc/9K3hA4AAAAAAAAAAAAAAAAAAAAAAADwG4QAAQFQk9QAAAAASUVORK5CYII='
+  );
+
+  const geometry = new THREE.PlaneGeometry(20, 20);
+
   for (let i = 0; i < imageCount; i++) {
-    const texture = textureLoader.load(props.images[i % props.images.length]);
-    const material = new THREE.MeshBasicMaterial({ map: texture });
-    const geometry = new THREE.PlaneGeometry(20, 20);
+    // const texture = textureLoader.load(props.images[i % props.images.length]);
+    // const material = new THREE.MeshBasicMaterial({ map: texture });
+    //const geometry = new THREE.PlaneGeometry(20, 20);
+    //const mesh = new THREE.Mesh(geometry, material);
+
+    const material = new THREE.MeshBasicMaterial({ map: placeholderTexture });
     const mesh = new THREE.Mesh(geometry, material);
 
     const phi = Math.acos(-1 + (2 * i) / imageCount);
@@ -47,6 +56,14 @@ onMounted(() => {
 
     mesh.lookAt(0, 0, 0);
     sphereGroup.add(mesh);
+
+    textureLoader.load(
+      props.images[i % props.images.length],
+      (texture: any) => {
+        material.map = texture;
+        material.needsUpdate = true;
+      }
+    );
   }
 
   scene.add(sphereGroup);
@@ -76,7 +93,14 @@ onMounted(() => {
   window.addEventListener('click', onClick);
 
   // 滚动放大动画
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', onScroll);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+
+  function onScroll() {
     const scrollY = window.scrollY;
     const targetScale = Math.min(2.5, 1 + scrollY / 800);
     gsap.to(sphereGroup.scale, {
@@ -85,13 +109,28 @@ onMounted(() => {
       z: targetScale,
       duration: 0.5
     });
-  });
-
-  function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
   }
   animate();
+
+  onUnmounted(() => {
+    window.removeEventListener('click', onClick);
+    window.removeEventListener('scroll', onScroll);
+
+    // 释放所有 mesh 的纹理、材质、几何体
+    sphereGroup.children.forEach((mesh: any) => {
+      if (mesh.material.map) {
+        mesh.material.map.dispose();
+      }
+      mesh.material.dispose();
+      mesh.geometry.dispose();
+    });
+
+    // 移除 group
+    scene.remove(sphereGroup);
+
+    // 销毁渲染器
+    renderer.dispose();
+  });
 });
 </script>
 

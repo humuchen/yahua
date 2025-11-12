@@ -67,7 +67,7 @@ import CardSwiper from '@/components/CardSwiper/CardSwiper.vue';
 import Grid from '@/components/Grid/Grid.vue';
 import ScalableImage from '@/components/ScalableImage/ScalableImage.vue';
 import { jobs, jiazhiguan, guanhuai, contents } from './resources';
-import bannerPic from '@/assets/banner2.jpg';
+import bannerPic from '@/assets/banner.jpg';
 </script>
 
 <style scoped>

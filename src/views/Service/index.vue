@@ -8,7 +8,7 @@
 import AMap from '@/components/AMap/AMap.vue';
 import { createApp, ref, watch } from 'vue';
 import ServicePopover from './ServicePopover.vue';
-import logo from '@/assets/images/logo.jpg';
+import logo from '@/assets/logo.jpg';
 
 const mapRef = ref<{ map: any }>();
 
@@ -24,6 +24,8 @@ const stores = [
     fax: '0513-85696288'
   }
 ];
+
+const logoUrl = `url(${logo}) no-repeat 50%`;
 
 watch(
   () => mapRef.value?.map,
@@ -92,14 +94,14 @@ watch(
     text-align: center;
     font-size: 1.5rem;
     color: #fff;
-    background: url(@/assets/images/logo.jpg) no-repeat 50%;
+    background: v-bind(logoUrl);
     background-size: cover;
   }
 
   :deep(.map-marker) {
     height: 3.2rem;
     width: 3.2rem;
-    background: url(@/assets/images/logo.jpg) no-repeat 50%;
+    background: v-bind(logoUrl);
     background-size: cover;
     transition: 0.1s;
     border-radius: 50%;
@@ -110,7 +112,7 @@ watch(
     width: 4.2rem;
     height: 4.2rem;
     transform: translateX(-0.9rem) translateY(-1.5rem);
-    background-image: url(@/assets/images/logo.jpg);
+    background-image: v-bind(logoUrl);
     border-radius: 50%;
   }
 
