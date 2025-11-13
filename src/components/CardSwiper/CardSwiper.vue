@@ -10,6 +10,7 @@ defineProps<{
     videoUrl?: string;
     descriptions?: string[];
   }[];
+  scale?: number;
 }>();
 
 const emits = defineEmits<{
@@ -25,6 +26,7 @@ const current = ref(0);
     <div>
       <Swiper.Container
         card
+        :scale="scale"
         ref="swiperRef"
         :duration="1000"
         :autoplay="false"

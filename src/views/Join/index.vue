@@ -55,7 +55,7 @@
     title="亚华关怀"
     desc="落实落细多样关怀，持续提高每一位员工的获得感和幸福感"
   >
-    <CardSwiper :options="guanhuai" />
+    <CardSwiper :options="guanhuai" :scale="0.45" />
   </BasicComponentSection>
 </template>
 
