@@ -1,1 +1,0 @@
-import{B as n}from"./index-DR_-zZ0-.js";import{d as r,c as o,o as t}from"./index-BSVKo_Ds.js";const p=r({__name:"index",setup(a){return(e,s)=>(t(),o(n,{id:"join",title:"走进亚华",subtitle:"质量卓越 特性安全 顾客满意 持续改进",src:e.bannerPic},null,8,["src"]))}});export{p as default};
