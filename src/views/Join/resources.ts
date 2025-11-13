@@ -8,6 +8,7 @@ import physical from '@/assets/physical.png';
 import insurance from '@/assets/insurance.png';
 import cultivation from '@/assets/cultivation.png';
 import development from '@/assets/development.png';
+import xinqu from '@/assets/xinqu.png';
 
 export const jobs = [
   {
@@ -64,8 +65,7 @@ export const guanhuai = [
     title: '提供多样的员工兴趣平台',
     description:
       '我们乐于创造员工之间分享兴趣爱好的机会，百变社团展现活力向上，一起探索世界，一起热血成长',
-    pictureUrl:
-      'https://s.xiaopeng.com/xp-fe/mainsite/2023/components/app-download/app-download-3.jpg'
+    pictureUrl: xinqu
   }
 ];
 

@@ -93,7 +93,7 @@ const current = ref(0);
     left: 0;
     right: 0;
     text-align: center;
-    color: rgba(0, 0, 0, 1);
+    color: var(--content-wrapper-color);
 
     .title {
       font-weight: 500;

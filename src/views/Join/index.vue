@@ -52,6 +52,7 @@
   </BasicComponentSection>
 
   <BasicComponentSection
+    :style="{ '--content-wrapper-color': '#2d99fd' }"
     title="亚华关怀"
     desc="落实落细多样关怀，持续提高每一位员工的获得感和幸福感"
   >
