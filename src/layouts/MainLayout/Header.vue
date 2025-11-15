@@ -5,10 +5,15 @@
     </RouterLink>
 
     <div class="menus">
-      <div class="menu-item-wrapper" v-for="item in menus" :key="item.name">
-        <RouterLink class="menu-item" :to="item.href">
+      <div
+        class="menu-item-wrapper"
+        v-for="item in menus"
+        :key="item.name"
+        @click="gotoHandler(item.href)"
+      >
+        <span class="menu-item">
           {{ item.name }}
-        </RouterLink>
+        </span>
       </div>
       <div class="menu-item-wrapper about-us" v-if="subMenus.length">
         <a class="menu-item">关于我们</a>
@@ -34,12 +39,17 @@ import { menus, subMenus } from './const.ts';
 import { useDarkTheme, useVisible } from './helpers.ts';
 import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import router from '@/router/index.ts';
 
 const route = useRoute();
 
 const [isVisible, onVisibleChange] = useVisible();
 const isDarkTheme = useDarkTheme(isVisible);
 const paths = computed(() => menus.map((m) => m.href));
+
+const gotoHandler = (path: string) => {
+  router.push(path);
+};
 
 watch(
   () => route.path,

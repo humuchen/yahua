@@ -23,7 +23,7 @@ const visible = computed(() => !paths.includes(route.path));
         </a>
       </div>
       <div class="record-info">
-        <div>©2013 江苏亚华集团 版权所有</div>
+        <div>©2013 江苏亚华集团 | 专业 · 创新 · 卓越</div>
         <div>
           <a href="https://beian.miit.gov.cn">苏ICP备13040026号</a>
         </div>
@@ -72,6 +72,8 @@ const visible = computed(() => !paths.includes(route.path));
   border-top: 0.1rem solid #f2f2f2;
   padding: 0 4.8rem;
   font-size: 1.4rem;
+  background: var(--color-background);
+  color: #fff;
 }
 
 .website-list {
