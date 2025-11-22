@@ -1,1 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><path fill="currentColor" d="M7.921 2.3C6.936 1.532 5.5 2.234 5.5 3.482v17.009c0 1.422 1.795 2.046 2.677.93l4.19-5.3a1.65 1.65 0 0 1 1.295-.626h6.852c1.428 0 2.049-1.808.921-2.684z"/></svg>
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><path fill="currentColor" d="M7.921 2.3C6.936 1.532 5.5 2.234 5.5 3.482v17.009c0 1.422 1.795 2.046 2.677.93l4.19-5.3a1.65 1.65 0 0 1 1.295-.626h6.852c1.428 0 2.049-1.808.921-2.684z"/></svg> -->
+
+<svg
+  width="32"
+  height="32"
+  viewBox="0 0 32 32"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feDropShadow
+        dx="1"
+        dy="1"
+        stdDeviation="1"
+        flood-color="#000000"
+        flood-opacity="0.5"
+      />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <path
+      d="M0 0 L24 8 L14 14 L8 24 L0 0 Z"
+      fill="#FFFFFF"
+      stroke="#00509E"
+      stroke-width="2"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M0 0 L14 14"
+      stroke="#00509E"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M18 18 L22 22"
+      stroke="#4DA6FF"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </g>
+</svg>
