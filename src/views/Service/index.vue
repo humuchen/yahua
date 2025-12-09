@@ -8,7 +8,7 @@
 import AMap from '@/components/AMap/AMap.vue';
 import { createApp, ref, watch } from 'vue';
 import ServicePopover from './ServicePopover.vue';
-import logo from '@/assets/logo.jpg';
+const logo = '/logo.jpg';
 
 const mapRef = ref<{ map: any }>();
 

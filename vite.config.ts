@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import viteCompression from 'vite-plugin-compression';
 import path from 'path';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
@@ -16,6 +17,32 @@ export default defineConfig(({ mode }) => {
         threshold: 10240,
         algorithm: 'gzip',
         ext: '.gz'
+      }),
+      VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['favico.ico'],
+        manifest: {
+          name: '亚华',
+          short_name: '亚华',
+          description: '亚华企业官网',
+          theme_color: '#ffffff',
+          background_color: '#ffffff',
+          display: 'standalone',
+          // scope: '/yahua/',
+          // start_url: '/yahua/',
+          id: '/yahua/',
+          icons: [
+            {
+              src: '/logo.jpg',
+              sizes: '898x992',
+              type: 'image/jpeg',
+              purpose: 'any'
+            }
+          ]
+        },
+        devOptions: {
+          enabled: true
+        }
       })
     ],
     server: {

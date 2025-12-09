@@ -8,7 +8,7 @@
 .logo {
   width: 6.2rem;
   height: 5.6rem;
-  background: url(@/assets/logo.jpg) no-repeat 50%;
+  background: url(/logo.jpg) no-repeat 50%;
   background-size: cover;
   border-radius: 50%;
 }
