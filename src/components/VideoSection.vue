@@ -156,59 +156,52 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* .video-carousel {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.video-swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.video-player {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 30%;
-  left: 15%;
-}
-
-.video-title {
-  color: #fff;
-  font-size: 3.2rem;
-  letter-spacing: 0.6rem;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-} */
-
 .dots {
   position: absolute;
-  bottom: 2.8rem;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 10;
+  gap: 1.2rem;
 
   .dot-item {
-    width: 4.4rem;
-    height: 4.4rem;
+    width: 6rem;
+    height: 4.8rem;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast);
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     .line {
-      width: 4rem;
-      height: 0.3rem;
-      background-color: hsla(0, 0%, 100%, 0.3);
-      transform: skewX(-30deg);
+      width: 4.8rem;
+      height: 0.4rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 0.2rem;
+      transition: all var(--transition-base);
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, var(--color-accent), #3b82f6);
+        transform: translateX(-100%);
+        transition: transform var(--transition-base);
+      }
 
       &.active {
-        background-color: var(--color-background);
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 2rem rgba(37, 99, 235, 0.3);
+
+        &::before {
+          transform: translateX(0);
+        }
       }
     }
   }
@@ -218,12 +211,28 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.7);
 }
 
 .content-wrapper {
   position: absolute;
-  left: 15%;
-  top: 30%;
+  left: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  max-width: 60rem;
+  animation: slideInUp 0.8s var(--transition-base) 0.3s both;
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(-30%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+  }
 
   .x {
     position: absolute;
@@ -237,14 +246,15 @@ onMounted(() => {
 
   .title {
     color: #fff;
-    font-family: HYYakuHei, serif;
-    font-size: 3.2rem;
-    letter-spacing: 0.6rem;
-    line-height: 1.5;
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 4.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    line-height: 1.3;
+    text-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.4);
   }
 }
 
-/* 视频区域容器 */
 .video-section {
   position: relative;
   width: 100%;
@@ -252,28 +262,41 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* 加载中遮罩 */
+.video-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.6) 0%,
+    rgba(30, 58, 138, 0.4) 50%,
+    rgba(15, 23, 42, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
 .loading-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
 }
 
-/* 加载动画 */
 .loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.1);
-  border-top-color: rgba(255, 255, 255, 0.8);
+  width: 6rem;
+  height: 6rem;
+  border: 0.3rem solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--color-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  box-shadow: 0 0 2rem rgba(37, 99, 235, 0.3);
 }
 
 @keyframes spin {
@@ -282,17 +305,15 @@ onMounted(() => {
   }
 }
 
-/* 视频占位符 */
 .video-placeholder {
-  background-color: #1a1a2e;
+  background-color: #0f172a;
   background-size: cover;
   background-position: center;
 }
 
-/* 视频加载完成渐显效果 */
 video.banner {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
 }
 
 video.banner.ready {
